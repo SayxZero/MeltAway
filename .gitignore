@@ -1,0 +1,9 @@
+/release
+/debug
+/log
+/backup
+/.qtc_clangd
+makefile
+.qmake.stash
+Makefile.Debug
+Makefile.Release
