@@ -1,3 +1,3 @@
 # MELT AWAY
 
-a simple 3d core written on qr opengl
+A simple 3d core written on QT OpenGL
