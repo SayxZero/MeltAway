@@ -104,6 +104,7 @@ public:
 
         checkBox_BrushSelection = new QCheckBox(centralwidget);
         checkBox_BrushSelection->setObjectName("checkBox_BrushSelection");
+        checkBox_BrushSelection->setEnabled(false);
         checkBox_BrushSelection->setChecked(false);
 
         horizontalLayout_2->addWidget(checkBox_BrushSelection);

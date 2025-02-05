@@ -62,6 +62,9 @@
       </item>
       <item>
        <widget class="QCheckBox" name="checkBox_BrushSelection">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Brush Selection</string>
         </property>

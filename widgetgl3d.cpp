@@ -280,14 +280,14 @@ void WidgetGL3D::paintGL()
                 glVertex2f(m_selection.rightBottom().x(), m_selection.rightBottom().y());
             glEnd();
 
-            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-            m_shaderProgram.setUniformValue("u_elementType", 4);
-            glBegin(GL_QUADS);
-                glVertex2f(m_selection.leftBottom().x(), m_selection.leftBottom().y());
-                glVertex2f(m_selection.leftTop().x(), m_selection.leftTop().y());
-                glVertex2f(m_selection.rightTop().x(), m_selection.rightTop().y());
-                glVertex2f(m_selection.rightBottom().x(), m_selection.rightBottom().y());
-            glEnd();
+//            glPolygonMode(GL_FRONT, GL_LINE);
+//            m_shaderProgram.setUniformValue("u_elementType", 4);
+//            glBegin(GL_QUADS);
+//                glVertex2f(m_selection.leftBottom().x(), m_selection.leftBottom().y());
+//                glVertex2f(m_selection.leftTop().x(), m_selection.leftTop().y());
+//                glVertex2f(m_selection.rightTop().x(), m_selection.rightTop().y());
+//                glVertex2f(m_selection.rightBottom().x(), m_selection.rightBottom().y());
+//            glEnd();
 
             glEnable(GL_CULL_FACE);
         }
@@ -472,28 +472,28 @@ void WidgetGL3D::selectByRect()
             }
         }
     } else {
-        for (qsizetype i = m_selection.minX(); i < m_selection.maxX(); i++) {
-            for (qsizetype j = m_selection.minY(); j < m_selection.maxY(); j++) {
-//                qDebug() << m_selectionColorBuffer[(i - m_selection.minX() + (j - m_selection.minY()) * (m_selection.maxY() - m_selection.minY()))];
-                if (m_selectionColorBuffer[(i - m_selection.minX() + (j - m_selection.minY()) * (m_selection.maxY() - m_selection.minY()))] == char(255)) {
-//                int ii = (i - m_selection.minX()) + (j - m_selection.minY()) * (m_selection.maxY() - m_selection.minY()) * 3;
-//                qDebug() << ii;
-                    QVector3D vert = unproject(QPoint(i, j));
-                    qDebug() << "Pnt";
-                    qDebug() << i;
-                    qDebug() << j;
-                    qDebug() << "";
-                    if (m_depthBuffer[QPoint(i, j).x() + QPoint(i, j).y() * width()] != 1.0) {
-                        qsizetype ind = m_model.getNearNum(vert);
-                        if (!m_altSelectionFlag)
-                            m_model.setSelected(ind);
-                        else
-                            m_model.setUnselected(ind);
-                        m_queue.append(ind);
-                    }
-                }
-            }
-        }
+//        for (qsizetype i = m_selection.minX(); i < m_selection.maxX(); i++) {
+//            for (qsizetype j = m_selection.minY(); j < m_selection.maxY(); j++) {
+////                qDebug() << m_selectionColorBuffer[(i - m_selection.minX() + (j - m_selection.minY()) * (m_selection.maxY() - m_selection.minY()))];
+//                if (m_selectionColorBuffer[(i - m_selection.minX() + (j - m_selection.minY()) * (m_selection.maxY() - m_selection.minY()))] == char(255)) {
+////                int ii = (i - m_selection.minX()) + (j - m_selection.minY()) * (m_selection.maxY() - m_selection.minY()) * 3;
+////                qDebug() << ii;
+//                    QVector3D vert = unproject(QPoint(i, j));
+//                    qDebug() << "Pnt";
+//                    qDebug() << i;
+//                    qDebug() << j;
+//                    qDebug() << "";
+//                    if (m_depthBuffer[QPoint(i, j).x() + QPoint(i, j).y() * width()] != 1.0) {
+//                        qsizetype ind = m_model.getNearNum(vert);
+//                        if (!m_altSelectionFlag)
+//                            m_model.setSelected(ind);
+//                        else
+//                            m_model.setUnselected(ind);
+//                        m_queue.append(ind);
+//                    }
+//                }
+//            }
+//        }
     }
     m_selectionDrawFilterFlag = false;
 }
